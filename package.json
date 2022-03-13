@@ -1,0 +1,21 @@
+{
+  "name": "onlinecourses",
+  "version": "1.0.0",
+  "description": "education web site",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [
+    "education",
+    "node.js"
+  ],
+  "author": "Kemal Sezgen",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
