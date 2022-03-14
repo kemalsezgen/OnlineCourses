@@ -18,172 +18,30 @@
     </div>
     <div class="container-fluid pr-0">
       <div class="heading_container">
-        <h2>
-          Popular courses
-        </h2>
-        <p>
-          It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem
-        </p>
+        <h2>All Courses</h2>
+        <p>All courses here. You can enroll to all of them.</p>
       </div>
       <div class="course_container">
         <div class=" course_owl-carousel owl-carousel owl-theme ">
+          <% for(let i = 0; i < courses.length; i++) { %>
           <div class="item">
             <div class="box">
               <div class="img-box">
                 <img src="images/c1.jpg" alt="">
               </div>
               <div class="detail-box">
-                <h4>
-                  Learn JavaScript
-                </h4>
-                <p>
-                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
-                </p>
-                <a href="">
-                  View Detail
-                </a>
+                <h4><%= courses[i].name %></h4>
+                <p><%= courses[i].description %></p>
+                <a href="">View Detail</a>
               </div>
             </div>
           </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/c2.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <h4>
-                  Learn Python
-                </h4>
-                <p>
-                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
-                </p>
-                <a href="">
-                  View Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/c3.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <h4>
-                  Learn Html
-                </h4>
-                <p>
-                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
-                </p>
-                <a href="">
-                  View Detail
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="box">
-              <div class="img-box">
-                <img src="images/c4.jpg" alt="">
-              </div>
-              <div class="detail-box">
-                <h4>
-                  Learn Java
-                </h4>
-                <p>
-                  Incidunt veritatis adipisci autem repellat possimus id eos praesentium, beatae repudiandae.
-                </p>
-                <a href="">
-                  View Detail
-                </a>
-              </div>
-            </div>
-          </div>
+          <% } %>
         </div>
       </div>
     </div>
   </section>
 
   <!-- course section ends -->
-
-  <!-- info section -->
-  <section class="info_section ">
-
-    <div class="container">
-      <div class="info_top ">
-        <div class="row ">
-          <div class="col-sm-6 col-md-4 col-lg-3">
-            <div class="info_detail">
-              <a href="index.html">
-                <h4>
-                  Natone
-                </h4>
-              </a>
-              <p>
-                Soluta odit exercitationem rerum aperiam eos consectetur impedit delectus qui reiciendis, distinctio, asperiores fuga labore a? Magni natus.
-              </p>
-              <div class="social_box">
-                <a href="">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4 col-lg-3 mx-auto">
-            <h4>
-              Contact us
-            </h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit
-            </p>
-            <div class="contact_nav">
-              <a href="">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                <span>
-                  Location
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                <span>
-                  Call : +01 123455678990
-                </span>
-              </a>
-              <a href="">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span>
-                  Email : demo@gmail.com
-                </span>
-              </a>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="info_form">
-              <h4>
-                SIGN UP TO OUR NEWSLETTER
-              </h4>
-              <form action="">
-                <input type="text" placeholder="Enter Your Email" />
-                <button type="submit">
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- end info_section -->
-
 
 <%- include ('partials/_footer') %>
