@@ -38,13 +38,14 @@
           <% } %>
         </div>
       </div>
-      <div class="widget-categories">
-        <h3 class="widget-title">Categories</h3>
+      
+      <div class="heading_container" style="margin-top: 50px">
+        <h2>Categories</h2>
         <ul>
           <% for(let i=0; i < categories.length; i++) { %>
             <li>
               <a href="/courses?categories=<%= categories[i].slug %>">
-                <%= categories[i].name %>
+                <p><%= categories[i].name %></p>
               </a>
             </li>
             <% } %>
