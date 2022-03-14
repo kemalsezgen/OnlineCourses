@@ -9,7 +9,6 @@
   </div>
   
   <!-- course section start -->
-
   <section class="course_section layout_padding">
     <div class="course_bg_box ">
       <div class="bg_img_box">
@@ -30,7 +29,7 @@
                 <img src="images/c1.jpg" alt="">
               </div>
               <div class="detail-box">
-                <h4><%= courses[i].name %></h4>
+                <h4><a href="/courses/<%= courses[i].slug %>"><%= courses[i].name %></a></h4>
                 <p><%= courses[i].description %></p>
                 <a href="">View Detail</a>
               </div>
@@ -38,6 +37,18 @@
           </div>
           <% } %>
         </div>
+      </div>
+      <div class="widget-categories">
+        <h3 class="widget-title">Categories</h3>
+        <ul>
+          <% for(let i=0; i < categories.length; i++) { %>
+            <li>
+              <a href="/courses?categories=<%= categories[i].slug %>">
+                <%= categories[i].name %>
+              </a>
+            </li>
+            <% } %>
+        </ul>
       </div>
     </div>
   </section>
