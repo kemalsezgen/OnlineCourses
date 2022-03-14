@@ -21,6 +21,11 @@
             <li class="nav-item">
               <a class="nav-link" href="/teachers">Teachers</a>
             </li>
+            <% if(userIN) { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <% } %>
             <li class="nav-item">
               <a class="nav-link" href="/contact">Contact Us</a>
             </li>
@@ -32,6 +37,12 @@
           <a href="/register"><span>Sign Up</span><i class="fa fa-user" aria-hidden="true"></i></a>
         </div>
         <% } %>
+        <% if(userIN) { %>
+          <div class="quote_btn-container">
+            <a href="/login"><span>Logout</span><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+          
+          </div>
+          <% } %>
       </div>
     </nav>
   </div>

@@ -25,10 +25,6 @@ app.set('view engine', 'ejs');
 global.userIN = null;
 
 // Middlewares
-app.use('*', (req, res, next) => {
-  userIN = req.session.userID;
-  next();
-})
 app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -38,6 +34,11 @@ app.use(session({
   saveUninitialized: true
 }))
 
+// Routes
+app.use('*', (req, res, next) => {
+  userIN = req.session.userID;
+  next();
+})
 app.use('/', pageRoute);
 app.use('/courses', courseRoute);
 app.use('/teachers', teacherRoute);
