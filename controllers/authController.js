@@ -1,10 +1,14 @@
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const Course = require('../models/Course');
+const Category = require('../models/Category');
+
+
 
 exports.createUser = async (req, res) => {
   try {
     const user = await User.create(req.body);
-    res.status(201).redirect('login');
+    res.status(201).redirect('/login');
   } catch (error) {
     res.status(400).json({
       status: 'error',
@@ -41,5 +45,19 @@ exports.loginUser = async (req, res) => {
 exports.logoutUser = (req, res) => {
   req.session.destroy(() => {
     res.redirect('/');
+  });
+};
+
+exports.getDashboardPage = async (req, res) => {
+  const user = await User.findOne({_id: req.session.userID}).populate('courses'); // userin içerisindeki course'lara ulaşmak için populate kullandık
+  const categories = await Category.find();
+  const courses = await Course.find({user: req.session.userID});
+  const users = await User.find();
+  res.status(200).render('dashboard', {
+    pageName: "dashboard",
+    user,
+    categories,
+    courses,
+    users
   });
 };
