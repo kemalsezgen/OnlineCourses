@@ -11,40 +11,44 @@
   <!-- contact section -->
   <section class="contact_section layout_padding">
     <div class="container">
-      <div class="heading_container">
+      <div class="offset-5 heading_container">
         <h2>
           Contact Us
         </h2>
       </div>
       <div class="row">
-        <div class="col-md-6">
+        <div class="offset-2 col-md-8">
+          <% if (flashMessages) { %>
+            <% if (flashMessages.success) { %>
+                <div class="alert alert-success">
+                    <%= flashMessages.success %>
+                </div>
+            <% } else if (flashMessages.error) { %>
+                <div class="alert alert-danger">
+                    <%= flashMessages.error %>
+                </div>
+            <% } %>
+        <% } %>
           <div class="form_container">
-            <form action="">
+            <form action="/contact" name="contactform" method="POST">
               <div>
-                <input type="text" placeholder="Your Name" />
+                <input type="text" name="name" placeholder="Your Name" />
               </div>
               <div>
-                <input type="text" placeholder="Phone Number" />
+                <input type="text" name="phoneNumber" placeholder="Phone Number" />
               </div>
               <div>
-                <input type="email" placeholder="Email" />
+                <input type="email" name="email" placeholder="Email" />
               </div>
               <div>
-                <input type="text" class="message-box" placeholder="Message" />
+                <input type="text" name="message" class="message-box" placeholder="Message" />
               </div>
-              <div class="btn_box">
-                <button>
+              <div class="offset-4 btn_box">
+                <button style="width:300px">
                   SEND
                 </button>
               </div>
             </form>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="map_container">
-            <div class="map">
-              <div id="googleMap"></div>
-            </div>
           </div>
         </div>
       </div>
