@@ -42,6 +42,7 @@
             <div class="blog-desc">
               <blockquote class="default"><%= course.description %></blockquote>
             </div>
+            <h3 class="author_name"><a href="#"><%= course.user.name %></a></h3>
           </div>
         </div>
       </div>
@@ -61,7 +62,9 @@
         <div class="widget-categories">
           <h3 class="widget-title">Categories</h3>
           <ul>
-            <li><a href="">Kategori 1</a></li>
+            <% for(let i = 0; i<categories.length; i++) { %>
+            <li><a href="/courses?categories=<%= categories[i].slug %>"><%= categories[i].name %></li>
+            <% } %>
           </ul>
         </div>
       </div>

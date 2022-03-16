@@ -12,20 +12,25 @@ const CourseSchema = new Schema(
     description: {
       type: String,
       required: true,
-      trim: true // remove spaces in desc's beginning and end
+      trim: true, // remove spaces in desc's beginning and end
     },
     slug: {
-      type: String
+      type: String,
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Category',
-    }
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
   },
   { timestamps: true } // to keep createdAt info in Entity
 );
 
-CourseSchema.pre('validate', function (next) { // pre ile Course olusturulmadan once yapılacak işlemleri ayarlıyoruz.
+CourseSchema.pre('validate', function (next) {
+  // pre ile Course olusturulmadan once yapılacak işlemleri ayarlıyoruz.
   this.slug = slugify(this.name, {
     lower: true,
     strict: true, // Sadece harfleri ve sayıları alacak.
