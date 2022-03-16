@@ -1,21 +1,22 @@
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 const Course = require('../models/Course');
 const User = require('../models/User');
+require('dotenv').config();
 
 exports.getHomePage = async (req, res) => {
   console.log(req.session.userID);
   const courses = await Course.find().sort('-createdAt').limit(2);
   const totalCourses = await Course.find().countDocuments();
-  const totalStudents = await User.countDocuments({role: 'student'});
-  const totalTeachers = await User.countDocuments({role: 'teacher'});
-  const teachers = await User.find({role: 'teacher'});
+  const totalStudents = await User.countDocuments({ role: 'student' });
+  const totalTeachers = await User.countDocuments({ role: 'teacher' });
+  const teachers = await User.find({ role: 'teacher' });
   res.status(200).render('index', {
     pageName: 'index',
     courses,
     totalCourses,
     totalStudents,
     totalTeachers,
-    teachers
+    teachers,
   });
 };
 
@@ -44,10 +45,10 @@ exports.getLoginPage = (req, res) => {
 };
 
 exports.getTeacherPage = async (req, res) => {
-  const teachers = await User.find({role: 'teacher'});
+  const teachers = await User.find({ role: 'teacher' });
   res.status(200).render('teachers', {
     pageName: 'teachers',
-    teachers
+    teachers,
   });
 };
 
@@ -71,7 +72,7 @@ exports.sendEmail = async (req, res) => {
       secure: true, // true for 465, false for other ports
       auth: {
         user: 'kemalsezgen1@gmail.com', // gmail account
-        pass: 'mapmtxqhbbnwtxou', // gmail password
+        pass: process.env.MAIL_PW, // gmail password
       },
     });
 
@@ -89,7 +90,7 @@ exports.sendEmail = async (req, res) => {
     // Preview only available when sending through an Ethereal account
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    
+
     req.flash('success', 'We Received your message succesfully');
 
     res.status(200).redirect('contact');
