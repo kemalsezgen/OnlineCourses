@@ -54,7 +54,7 @@
         </div>
         <!-- end container -->
       </div>
-  <% } %> <% if(user.role ==='teacher') { %>
+    <% } %> <% if(user.role ==='teacher') { %>
     <div class="all-title-box" style="margin-top: 35px; margin-bottom: 20px;">
       <div class="container text-center">
         <h1><%= user.name %><span class="m_1"> - TEACHER</span></h1>
@@ -228,6 +228,42 @@
         </div>
         </div>
       </div>
-    <% } %>
+    <% } if(user.role ==='admin'){ %>
+      <div class="all-title-box" style="margin-top: 35px; margin-bottom: 20px;">
+        <div class="container text-center">
+          <h1><%= user.name %><span class="m_1"> - ADMIN</span></h1>
+        </div>
+      </div>
+      
+      <div id="overviews" class="section wb">
+        <div class="container">
+          <div class="row mt-5">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Role</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <% for (let i=0; i< users.length; i++) { %>
+                    <tr>
+                    <th scope="row"><%=users[i]._id %></th>
+                    <td><%=users[i].email %></td>
+                    <td><%=users[i].role %></td>
+                    <td><a href="/users/<%= users[i]._id %>?_method=DELETE" 
+                      onclick="confirm('ARE YOU SURE')"
+                      class="btn btn-danger rounded-0 text-white"><span>DELETE</span></a></td>
+                    </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    <% } %> 
 <% } %> 
 <%- include('partials/_footer'); %>
