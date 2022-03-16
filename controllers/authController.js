@@ -26,11 +26,9 @@ exports.loginUser = async (req, res) => {
       if (user) {
         bcrypt.compare(password, user.password, (error, same) => {
           // compare ile şifreleri karşılaştırıyoruz, same == true ise giris yaptırıyorum.
-          if (same) {
             // USER SESSION
             req.session.userID = user._id;
             res.status(200).redirect('/');
-          }
         });
       }
     });
