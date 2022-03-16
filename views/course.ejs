@@ -36,7 +36,7 @@
             </div>
             <% } %>
             <div class="meta-info-blog">
-              <span><i class="fa fa-calendar"></i></span>
+              <span><i class="fa fa-calendar"></i><%= course.createdAt.toDateString() %></span>
             </div>
             <div class="blog-title">
               <h2><b><%= course.name %></b></h2>
@@ -44,23 +44,12 @@
             <div class="blog-desc">
               <blockquote class="default"><%= course.description %></blockquote>
             </div>
-            <h3 class="author_name"><a href="#"><%= course.user.name %></a></h3>
+            <h4 class="author_name">TEACHER OF THIS COURSE -> <%= course.user.name %></h4>
           </div>
         </div>
       </div>
       <!-- end col -->
-      <div class="col-lg-3 col-12 right-single">
-        <div class="widget-search">
-          <div class="site-search-area">
-            <form method="GET" action="/courses">
-              <div>
-                <input class="input-text form-control" name="search" id="search-k" placeholder="Search course..."
-                  type="text" />
-                <button value="Search" type="submit">search</button>
-              </div>
-            </form>
-          </div>
-        </div>
+      <div class="col-lg-3 col-12 right-single">>
         <div class="widget-categories">
           <h3 class="widget-title">Categories</h3>
           <ul>
