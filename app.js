@@ -12,7 +12,7 @@ const userRoute = require('./routes/userRoute.js');
 const app = express();
 
 // Connect to Database
-mongoose.connect('mongodb://localhost/onlinecourse-db').then(() => {
+mongoose.connect('mongodb+srv://kemal:xx3ZZKpceDB26kr4@cluster0.7opia.mongodb.net/onlinecourses-db?retryWrites=true&w=majority').then(() => {
   console.log('Database connected successfuly');
 });
 
@@ -32,7 +32,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost/onlinecourse-db',
+      mongoUrl: 'mongodb+srv://kemal:xx3ZZKpceDB26kr4@cluster0.7opia.mongodb.net/onlinecourses-db?retryWrites=true&w=majority',
     }),
   })
 );
@@ -57,7 +57,7 @@ app.use('/courses', courseRoute);
 app.use('/categories', categoryRoute);
 app.use('/users', userRoute);
 
-const port = 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`App started on port ${port}`);
 });
