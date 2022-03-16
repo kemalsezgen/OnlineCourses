@@ -8,12 +8,14 @@ exports.getHomePage = async (req, res) => {
   const totalCourses = await Course.find().countDocuments();
   const totalStudents = await User.countDocuments({role: 'student'});
   const totalTeachers = await User.countDocuments({role: 'teacher'});
+  const teachers = await User.find({role: 'teacher'});
   res.status(200).render('index', {
     pageName: 'index',
     courses,
     totalCourses,
     totalStudents,
-    totalTeachers
+    totalTeachers,
+    teachers
   });
 };
 
@@ -38,6 +40,14 @@ exports.getRegisterPage = (req, res) => {
 exports.getLoginPage = (req, res) => {
   res.status(200).render('login', {
     pageName: 'login',
+  });
+};
+
+exports.getTeacherPage = async (req, res) => {
+  const teachers = await User.find({role: 'teacher'});
+  res.status(200).render('teachers', {
+    pageName: 'teachers',
+    teachers
   });
 };
 

@@ -6,7 +6,6 @@ const pageRoute = require('./routes/pageRoute');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const courseRoute = require('./routes/courseRoute.js');
-const teacherRoute = require('./routes/teacherRoute.js');
 const categoryRoute = require('./routes/categoryRoute.js');
 const userRoute = require('./routes/userRoute.js');
 
@@ -55,7 +54,6 @@ app.use('*', (req, res, next) => {
 });
 app.use('/', pageRoute);
 app.use('/courses', courseRoute);
-app.use('/teachers', teacherRoute);
 app.use('/categories', categoryRoute);
 app.use('/users', userRoute);
 
