@@ -8,11 +8,12 @@ const methodOverride = require('method-override');
 const courseRoute = require('./routes/courseRoute.js');
 const categoryRoute = require('./routes/categoryRoute.js');
 const userRoute = require('./routes/userRoute.js');
+require('dotenv').config();
 
 const app = express();
 
 // Connect to Database
-mongoose.connect('mongodb+srv://kemal:xx3ZZKpceDB26kr4@cluster0.7opia.mongodb.net/onlinecourses-db?retryWrites=true&w=majority').then(() => {
+mongoose.connect(process.env.MONGODB_URL).then(() => {
   console.log('Database connected successfuly');
 });
 
@@ -32,7 +33,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({
-      mongoUrl: 'mongodb+srv://kemal:xx3ZZKpceDB26kr4@cluster0.7opia.mongodb.net/onlinecourses-db?retryWrites=true&w=majority',
+      mongoUrl: process.env.MONGODB_URL,
     }),
   })
 );
